@@ -1,0 +1,8 @@
+Status
+
+My directive is getting called. However, scope is not being passed
+
+References
+
+http://devartisans.com/articles/angularjs-directives-typescript is the most useful reference for creating directives. There are several other
+references that show other ways of creating directives.
