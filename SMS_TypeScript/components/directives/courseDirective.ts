@@ -1,54 +1,72 @@
 /// <reference path="../../typings/angularjs/angular.d.ts" />
-interface ICustomerSearchScope  extends ng.IScope
+
+// We are telling the compiler that the following variables will be in IStudent
+interface IStudent  extends ng.IScope
 {
-    Ctrl: CustomCtrl;
-    root: String;
-    getData: ()=> void;
+    root: string;
+    getData: (any)=> void;
     add: ()=> void;
     update: ()=> void;
     delete: ()=> void;
+    variable: String;
+    course: String;
     students: [{}];
+    studentController: CustomCtrl;
 }
 class CustomCtrl {
     static $inject = ['$scope', '$http', '$element'];
-    constructor(private $scope: ICustomerSearchScope,
+    constructor(private $scope: IStudent,
                 private $http : ng.IHttpService,
                 private $element: JQuery)
     {
-        $scope.root = 'http://localhost:3000/physics';
+        root: String;
+        console.log($scope.course);
+        $scope.studentController = this;
+        $scope.variable = "Wake up";
+        $scope.root = 'http://localhost:3000/' + $scope.course;
+        this.root = 'http://localhost:3000/' + $scope.course;
         //$scope.$ = angular.element;
         $scope.getData = this.getData;
         $scope.add = this.add;
         $scope.update = this.update;
         $scope.delete = this.delete;
-        this.getData();
-        $scope.Ctrl = this;
+        this.getData($scope);
     }
-    private getData() {
-        console.log("Here");
-        var url: String = this.$scope.root;
-        // Don't understand compiler error on next line.
+    // Don't like having to pass $scope  as an argument
+    private getData($scope: IStudent) {
         $.ajax({
-            url: url,
+            url: this.root,
             method: 'GET'
         }).then(function(data) {
-            // FReads data correctly. Left hand side is undefined.
+            // The following works
+            $scope.variable = "I am going to sleep";
+            $scope.students = data;
+            $scope.$apply();
+
+            // The following stores the data correctly. However, the $apply() does not work.
+            this.variable = "I am going to sleep";
             this.students = data;
+            //this.$apply();
+            //$scope.$apply();
             // Assume that the id's are in order. Otherwise, I may need to do a sort.
             //nextId = ++$scope.students[$scope.students.length - 1].id;
-            //$scope.$apply();
+            // The next line does not work
         });
     }
     private add() {
     }
-    private update() {
+    private update($scope, student1, index) {
+        console.log(student1);
+        console.log(index);
     }
     private delete() {
     }
 }
+// Looks like the registration of controller is not needed
+//angular.module('myApp').controller("CustomCtrl", CustomCtrl);
 
 
-
+//url: 'http://localhost:3000/Physics',
 
 
 

@@ -1,7 +1,10 @@
-<div ng-controller="CustomCtrl">
+<p>{{variable}}</p>
+
+
+<div>
     <h2>{{message1}} {{course}}</h2>
     <div>
-        <span ng-repeat="student in CustomCtrl.students">
+        <span ng-repeat="student in students">
            <span class="fname"> {{student.fname}} </span>
            <span class="lname"> {{student.lname}}</span>
             <button class="delete-button" ng-click="delete($index)">
@@ -37,6 +40,7 @@
     <!--<button></button>-->
 
 
+<span ng-repeat="student in studentController.students">
 
     <!--Transcluded stuff first placement: <div ng-transclude></div>-->
 
