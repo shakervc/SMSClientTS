@@ -4,35 +4,12 @@
 /// <reference path="typings/angularjs/angular.d.ts" />
 /// <reference path="components/directives/courseDirective.ts" />
 
-class HelloWorldController{
 
-    constructor(private $scope){
-
-        $scope.prefixText = "Hello ";
-        $scope.inputText = " ";
-        $scope.displayText = "";
-        $scope.onDisplay = () => {
-
-            this.$scope.displayText = this.$scope.prefixText + this.$scope.inputText;
-        };
-    }
-}
-
-//Goes through the directive but nothing happens. Does not go to the controller
-//angular
-//    .module("myApp", [])
-//    .directive("courseDirective", function () {
-//        return {
-//            scope: {
-//                course: '@'
-//            },
-//            //templateUrl: "components/directives/courseDirective.html",
-//            template: "<p>asdfgh</p>"
-//            ,
-//            controller: HelloWorldController
-//        };
-//    })
-//;
+//class CustomCtrl {
+//    constructor(private $scope) {
+//        $scope.variable = "Hello";
+//    }
+//}
 
 // This directive displays the p element.
 //http://devartisans.com/articles/angularjs-directives-typescript  Best tutorial so far
@@ -53,15 +30,15 @@ module app {
         link(scope : ng.IScope, elements : ng.IAugmentedJQuery, attrs : ng.IAttributes) {
             //your code
         }
-        //template = '<p>asdfgh</p>';
         templateUrl = "components/directives/courseDirective.html";
         controller = CustomCtrl;
+        scope = {
+            "course": '@',
+        }
     }
 
     angular.module('myApp', [])
         .directive('courseDirective', courseDirective.instance)
-        .controller("CustomCtrl", CustomCtrl);
-
 }
 
 
