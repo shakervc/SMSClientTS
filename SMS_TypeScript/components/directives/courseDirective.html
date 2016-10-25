@@ -1,20 +1,19 @@
-<p>{{variable}}</p>
-
-
 <div>
-    <h2>{{message1}} {{course}}</h2>
+    <h2>{{message1}} {{studentController.course}}</h2>
     <div>
-        <span ng-repeat="student in students">
+        <span ng-repeat="student in studentController.students">
            <span class="fname"> {{student.fname}} </span>
            <span class="lname"> {{student.lname}}</span>
+
             <button class="delete-button" ng-click="delete($index)">
                 Delete
             </button>
-            <label class="update-checkbox" >Click to Update<input type="checkbox" ng-model="student.checked" ng-init="student.checked=false" /></label>
+            <label class="update-checkbox" >Click to Update<input type="checkbox" ng-model="student.checked"
+                  ng-init="student.checked=false" /></label>
                 <span class="input-box" ng-if="student.checked">
                     First name: <input type="text" ng-model="student1.fname">
                     Last name: <input type="text" name="lname"  ng-model="student1.lname">
-                    <button ng-click="student.checked=false; update(student1, $index)">Update</button>
+                    <button ng-click="student.checked=false; studentController.update(student1, $index)">Update</button>
                 </span>
             <br>
         </span>
@@ -33,26 +32,3 @@
     </span>
 </div>
 
-
-
-<!--<div>-->
-    <!--<p>IN directive</p>-->
-    <!--<button></button>-->
-
-
-<span ng-repeat="student in studentController.students">
-
-    <!--Transcluded stuff first placement: <div ng-transclude></div>-->
-
-    <!--Message from parent controller:  {{message}} <br> Message from the directive template:    In the template in the first directive file: <br />-->
-
-    <!--<br/>-->
-    <!--Transcluded stuff second placement:  <div ng-transclude></div>-->
-    <!--VAR 2 : {{var2}}-->
-    <!--Friend: {{friend}}-->
-    <!--ngInit Value: {{initValue}}-->
-<!--</div>-->
-
-
-<!--The ng-transclude attribute directive specifies where the transcluded stuff should be placed.
-<!--I have placed it in two different places above-->

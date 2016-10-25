@@ -5,14 +5,6 @@
 /// <reference path="components/directives/courseDirective.ts" />
 
 
-//class CustomCtrl {
-//    constructor(private $scope) {
-//        $scope.variable = "Hello";
-//    }
-//}
-
-// This directive displays the p element.
-//http://devartisans.com/articles/angularjs-directives-typescript  Best tutorial so far
 module app {
     'use strict';
 
@@ -30,15 +22,18 @@ module app {
         link(scope : ng.IScope, elements : ng.IAugmentedJQuery, attrs : ng.IAttributes) {
             //your code
         }
+
+        scope = {
+            course: '@'
+        }
+        //template = '<p>asdfgh</p>';
         templateUrl = "components/directives/courseDirective.html";
         controller = CustomCtrl;
-        scope = {
-            "course": '@',
-        }
     }
 
     angular.module('myApp', [])
-        .directive('courseDirective', courseDirective.instance)
+        .directive('courseDirective', courseDirective.instance);
+
 }
 
 
