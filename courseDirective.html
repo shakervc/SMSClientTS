@@ -1,0 +1,34 @@
+<div>
+    <h2>{{message1}} {{studentController.course}}</h2>
+    <div>
+        <span ng-repeat="student in studentController.students">
+           <span class="fname"> {{student.fname}} </span>
+           <span class="lname"> {{student.lname}}</span>
+
+            <button class="delete-button" ng-click="studentController.delete($index)">
+                Delete
+            </button>
+            <label class="update-checkbox" >Click to Update<input type="checkbox" ng-model="student.checked"
+                  ng-init="student.checked=false" /></label>
+                <span class="input-box" ng-if="student.checked">
+                    First name: <input type="text" ng-model="student1.fname">
+                    Last name: <input type="text" name="lname"  ng-model="student1.lname">
+                    <button ng-click="student.checked=false; studentController.update(student1, $index)">Update</button>
+                </span>
+            <br>
+        </span>
+    </div>
+
+    <br><br>
+
+    <label>Click to Add a Student
+        <input type="checkbox" ng-model="studentController.addChecked" ng-init="checked=false"/>
+    </label>
+    <span ng-if="studentController.addChecked">
+        First name: <input type="text" ng-model="student.fname">
+        Last name: <input type="text" name="lname"  ng-model="student.lname">
+        <button ng-click="student.fname=''; student.lname=''  ">Clear</button>
+        <button ng-click="studentController.add(student)">Add</button>
+    </span>
+</div>
+
