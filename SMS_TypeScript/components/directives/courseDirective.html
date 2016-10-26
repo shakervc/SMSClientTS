@@ -5,7 +5,7 @@
            <span class="fname"> {{student.fname}} </span>
            <span class="lname"> {{student.lname}}</span>
 
-            <button class="delete-button" ng-click="delete($index)">
+            <button class="delete-button" ng-click="studentController.delete($index)">
                 Delete
             </button>
             <label class="update-checkbox" >Click to Update<input type="checkbox" ng-model="student.checked"
@@ -22,13 +22,12 @@
     <br><br>
 
     <label>Click to Add a Student
-        <input type="checkbox" ng-model="checked" ng-init="checked=false"/>
+        <input type="checkbox" ng-model="studentController.addChecked" ng-init="checked=false"/>
     </label>
-    <span ng-if="checked">
+    <span ng-if="studentController.addChecked">
         First name: <input type="text" ng-model="student.fname">
         Last name: <input type="text" name="lname"  ng-model="student.lname">
         <button ng-click="student.fname=''; student.lname=''  ">Clear</button>
-        <button ng-click="add(student)">Add</button>
+        <button ng-click="studentController.add(student)">Add</button>
     </span>
 </div>
-
