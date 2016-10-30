@@ -1,0 +1,30 @@
+.delete-button {
+    position: absolute;
+    left: 200px;
+}
+
+.update-checkbox {
+    position: absolute;
+    left: 275px;
+}
+
+.input-box {
+    position: absolute;
+    left: 410px;
+}
+
+.fname {
+    position: absolute;
+    width:  100px;
+    text-overflow: ellipsis;
+    left: 10px;
+}
+
+
+.lname {
+    position: absolute;
+    width:  100px;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    left: 100px;
+}
